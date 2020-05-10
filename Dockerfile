@@ -35,10 +35,10 @@ RUN apk update  \
            "/etc/php7/php.ini" \
        \
     && rm -f index.html \
-    && git clone https://github.com/DanielnetoDotCom/YouPHPTube-Encoder.git \
-    && mv YouPHPTube-Encoder/* . \
-    && mv YouPHPTube-Encoder/.[!.]* . \
-    && rm -rf YouPHPTube-Encoder \
+    && git clone https://github.com/WWBN/AVideo-Encoder.git \
+    && mv AVideo-Encoder/* . \
+    && mv AVideo-Encoder/.[!.]* . \
+    && rm -rf AVideo-Encoder \
     && chmod a+rx /usr/local/bin/entrypoint.sh \
     && chmod a+rx /usr/local/bin/gencerts.sh \
     && mkdir videos \
