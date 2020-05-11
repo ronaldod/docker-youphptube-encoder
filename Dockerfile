@@ -25,6 +25,7 @@ RUN apk update  \
            -e 's!^(\s*ErrorLog)\s+\S+!\1 /proc/self/fd/2!g' \
            -e 's!^#(LoadModule rewrite_module .*)$!\1!g' \
            -e 's!^(\s*AllowOverride) None.*$!\1 All!g' \
+           -e 's!^(Listen = )(.*)$!\1 8000!g' \
            "/etc/apache2/httpd.conf" \
        \
     && sed -ri \
@@ -46,5 +47,5 @@ RUN apk update  \
     && chown -R apache:apache /var/www
 
 VOLUME ["/var/www/localhost/htdocs/videos"]
-EXPOSE 80 443
+EXPOSE 8000 8443
 CMD ["entrypoint.sh"]
