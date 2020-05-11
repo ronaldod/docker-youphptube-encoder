@@ -2,6 +2,7 @@ FROM alpine:3.8
 
 ENV DOMAIN your.domain
 ENV DOMAIN_PROTOCOL http
+ENV DOMAIN_PORT 8000
 ENV SITE_TITLE your_site_title
 ENV ADMIN_PASSWORD password
 ENV ADMIN_EMAIL webmaster@your.domain
@@ -39,6 +40,10 @@ RUN apk update  \
     && mv AVideo-Encoder/* . \
     && mv AVideo-Encoder/.[!.]* . \
     && rm -rf AVideo-Encoder \
+    && sed -ri \
+           -e "s!<?php echo \$global\[\'webSiteRootURL\'\]; ?>!${DOMAIN_PROTOCOL}://${DOMAIN}:${DOMAIN_PORT}/!g" \
+           "/var/www/localhost/htdocs/view/jquery-file-upload/form.php/" \
+        \
     && chmod a+rx /usr/local/bin/entrypoint.sh \
     && chmod a+rx /usr/local/bin/gencerts.sh \
     && mkdir videos \
