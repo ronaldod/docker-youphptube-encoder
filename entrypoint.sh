@@ -22,7 +22,7 @@ if [[ "${DOMAIN}" != "your.domain" && "${DB_HOST}" != "localhost" ]]; then
     echo "USE youPHPTubeEncoder; INSERT INTO configurations (id, allowedStreamersURL, defaultPriority, version, created, modified) VALUES (1, '${DOMAIN_PROTOCOL}://${DOMAIN}', 1, '3.1', now(), now());" | mysql --host="${DB_HOST}" --user="${DB_USER}" --password="${DB_PASSWORD}"
   fi
 fi
-chown -R apache:apache /var/www/localhost/htdocs/videos/configuration.php
+chown apache:apache /var/www/localhost/htdocs/videos/configuration.php
 
 rm -f /run/apache2/httpd.pid
 exec httpd -DFOREGROUND "$@"
