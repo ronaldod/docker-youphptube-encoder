@@ -35,7 +35,7 @@ RUN apk update  \
            "/etc/php7/php.ini" \
        \
     && rm -f index.html \
-    && git clone https://github.com/ronaldod/AVideo-Encoder.git \
+    && git clone https://github.com/ronaldod/AVideo-Encoder.git  \
     && mv AVideo-Encoder/* . \
     && mv AVideo-Encoder/.[!.]* . \
     && rm -rf AVideo-Encoder \
